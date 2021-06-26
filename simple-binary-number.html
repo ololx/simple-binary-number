@@ -4,69 +4,80 @@
         <style>
         	html,
             body {
-                width: 100%;
-                height: 100%;
+                width: max(128px, 100%);
+                height: max(1024px, 100%);
                 outline: none;
             }
 
             body {
-                background-color: black;
+                background: rgb(36, 35, 35);
             }
 
-            .pl {
-			    height : 100px;
-			    position : relative;
-			    margin-top : 0px;
-			    margin-left : 0px;
+			.pl {
+				position : relative;
+				top: 50%;
+				left: 50%;
+				margin-left : -512;
+				height: 128px;
+				width: 1024;
 				overflow: hidden;
-			    text-align: center;
+			    
 			}
-			.pl ul {
+
+			#decimal {
+			    margin-top : -128px;
+			}
+
+			#binary {
 			    margin-top : 0px;
 			}
+
+			.pl ul {
+				position : relative;
+			    height: 100%;
+				width: 100%
+			}
+
 			.pl ul li {
+				border: none;
+				margin-left: 0;
+				position : relative;
+				height: 256px;
+				width: 113px;
 				float: left;
 				list-style-type: none;
-			    margin-left : 2%;
 			}
+
+			.pl ul a, #decimal {
+				text-align: center;
+				font: lighter 100px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+				text-decoration: none;
+				color: #ffa500;
+			}
+
 			.pl ul a {
+				border: none;
+				position : relative;
+				margin-top: 0px;
+				margin-left: 0px;
+				height: 128px;
+				width: 100%;
 			    display: block;
-			    height: 100px;
-				font: lighter 36px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-				text-decoration: none;
-				-webkit-transition: margin .4s ease-in-out;
-				-moz-transition: margin .4s ease-in-out;
-				-o-transition: margin .4s ease-in-out;
-				-ms-transition: margin .4s ease-in-out;
-				transition: margin .4s ease-in-out;
-			}
-			.pta ul li {
-			    height: 100px;
-				min-width:15px;
-				width:29%;
-				text-align:center;
-			}
-			.pta ul a {
-				text-align:center;
-				font: lighter 36px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-				text-decoration: none;
 			}
 
 			.pl ul a.zero {
-			    min-width: 20%;
-				width:100%;
-				background: green;
+				box-shadow: 0 -2px 0 0px rgb(172, 172, 172);
+				color: rgb(172, 172, 172);
 			}
 
 			.pl ul a.one {	
-			    min-width: 20%;
-				width:100%;
-				background: red;
+				box-shadow: 0 -2px 0 0px #ffa500;
+				color: #ffa500;
 			}
 			
 			.pl ul li.active {
 				animation: active 2s 0s;
-				margin-top: -100px;
+				margin-top: -128px;
 			}
 
 			.pl ul li.inactive {
@@ -76,16 +87,16 @@
 
 			@keyframes active {
                 0%, 50% {
-                    margin-top: -50px;
+                    margin-top: -64px;
                 }
                 50%, 100% {
-                    margin-top: -100px;
+                    margin-top: -128px;
                 }
             }
 
             @keyframes inactive {
                 0%, 50% {
-                    margin-top: -50px;
+                    margin-top: -64px;
                 }
                 50%, 100% {
                     margin-top: 0px;
@@ -99,7 +110,6 @@
         	function check(element) {
 			  	if (element == null || element == 'undefined') return;
 
-				console.log(element.classList);
 				if (element.classList.contains("active")) {
 					element.classList.remove("active");
 					element.classList.add("inactive");
@@ -113,15 +123,17 @@
 					let power = element.id;
 					number += Math.pow(2, power - 1);
 				}
-			  	console.log(element.classList);
-
-			  	console.log(number);
-
+				
+				let decimalView = document.getElementById("decimal");
+				if (decimalView == null || decimalView == 'undefined') return;
+				
+				decimalView.innerText = number;
 			}
         </script>
     </head>
     <body>
-    	<div class="pl">
+		<div id="decimal" class = "pl">0</div>
+    	<div id="binary" class = "pl">
     		<ul>
 				<li id="8" onclick="check(this)">
 					<a href="#" class="zero">0</a>
