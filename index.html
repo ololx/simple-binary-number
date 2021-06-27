@@ -1,130 +1,28 @@
 <html>
-    <head>
+	<head>
+ 		<meta charset = "UTF-8">
+ 		<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+ 		<meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+ 		<link rel = "stylesheet" type = "text/css" media = "all" href = "simple-binary-number.css"/>
         <title>Simple Binary Number</title>
-        <style>
-        	html,
-            body {
-                width: max(128px, 100%);
-                height: max(1024px, 100%);
-                outline: none;
-            }
-
-            body {
-                background: rgb(36, 35, 35);
-            }
-
-			.pl {
-				position : relative;
-				top: 50%;
-				left: 50%;
-				margin-left : -512;
-				height: 128px;
-				width: 1024;
-				overflow: hidden;
-			    
-			}
-
-			#decimal {
-			    margin-top : -128px;
-			}
-
-			#binary {
-			    margin-top : 0px;
-			}
-
-			.pl ul {
-				position : relative;
-			    height: 100%;
-				width: 100%
-			}
-
-			.pl ul li {
-				border: none;
-				margin-left: 0;
-				position : relative;
-				height: 256px;
-				width: 113px;
-				float: left;
-				list-style-type: none;
-			}
-
-			.pl ul a, #decimal {
-				text-align: center;
-				font: lighter 100px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-				text-decoration: none;
-				color: #ffa500;
-			}
-
-			.pl ul a {
-				border: none;
-				position : relative;
-				margin-top: 0px;
-				margin-left: 0px;
-				height: 128px;
-				width: 100%;
-			    display: block;
-			}
-
-			.pl ul a.zero {
-				box-shadow: 0 -2px 0 0px rgb(172, 172, 172);
-				color: rgb(172, 172, 172);
-			}
-
-			.pl ul a.one {	
-				box-shadow: 0 -2px 0 0px #ffa500;
-				color: #ffa500;
-			}
-			
-			.pl ul li.active {
-				animation: active 2s 0s;
-				margin-top: -128px;
-			}
-
-			.pl ul li.inactive {
-				animation: inactive 2s 0s;
-				margin-top: 0px;
-			}
-
-			@keyframes active {
-                0%, 50% {
-                    margin-top: -64px;
-                }
-                50%, 100% {
-                    margin-top: -128px;
-                }
-            }
-
-            @keyframes inactive {
-                0%, 50% {
-                    margin-top: -64px;
-                }
-                50%, 100% {
-                    margin-top: 0px;
-                }
-            }
-
-        </style>
         <script type="text/javascript">
         	var number = 0;
 
         	function check(element) {
 			  	if (element == null || element == 'undefined') return;
 
+				let power = element.id;
 				if (element.classList.contains("active")) {
 					element.classList.remove("active");
 					element.classList.add("inactive");
-
-					let power = element.id;
 					number -= Math.pow(2, power - 1);
 				} else {
 					element.classList.add("active");
 					element.classList.remove("inactive");
-
-					let power = element.id;
 					number += Math.pow(2, power - 1);
 				}
 				
-				let decimalView = document.getElementById("decimal");
+				let decimalView = document.getElementById("result");
 				if (decimalView == null || decimalView == 'undefined') return;
 				
 				decimalView.innerText = number;
@@ -132,7 +30,13 @@
         </script>
     </head>
     <body>
-		<div id="decimal" class = "pl">0</div>
+		<div id="decimal" class = "pl">
+			<ul>
+				<li>
+					<a id="result" href="#" class="result">0</a>
+				</li>
+			</ul>
+		</div>
     	<div id="binary" class = "pl">
     		<ul>
 				<li id="8" onclick="check(this)">
