@@ -44,11 +44,6 @@ body {
 	list-style-type: none;
 }
 
-#decimal ul li {
-	float: right;
-	margin-right: 120px;
-}
-
 .pl ul a {
 	text-align: center;
 	font: lighter 100px "Helvetica Neue", "Arial";
