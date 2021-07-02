@@ -1,0 +1,108 @@
+html,
+body {
+    width: max(128px, 100%);
+    height: max(1024px, 100%);
+    outline: none;
+}
+
+body {
+    background: rgb(36, 35, 35);
+}
+
+.pl {
+	position : relative;
+	top: 50%;
+	left: 50%;
+	margin-left : -512;
+	height: 128px;
+	width: 1024;
+	overflow: hidden;
+    
+}
+
+#decimal {
+    margin-top : -128px;
+}
+
+#binary {
+    margin-top : 0px;
+}
+
+.pl ul {
+	position : relative;
+    height: 100%;
+	width: 100%
+}
+
+.pl ul li {
+	border: none;
+	margin-left: 0;
+	position : relative;
+	height: 256px;
+	width: 113px;
+	float: left;
+	list-style-type: none;
+}
+
+.pl ul a {
+	text-align: center;
+	font: lighter 100px "Helvetica Neue", "Arial";
+	text-decoration: none;
+	color: #ffa500;
+    text-shadow:0 0 4px #ffa500;
+}
+
+.pl ul a {
+	border: none;
+	position : relative;
+	margin-top: 0px;
+	margin-left: 0px;
+	height: 128px;
+	width: 100%;
+    display: block;
+}
+
+.pl ul a.result {
+	text-shadow:0 0 4px #ffa500;
+	color: #ffa500;
+}
+
+.pl ul a.zero {
+	box-shadow: 0 -2px 0 0px rgb(172, 172, 172);
+	text-shadow:0 0 4px rgb(172, 172, 172);
+	color: rgb(172, 172, 172);
+}
+
+.pl ul a.one {	
+	box-shadow: 0 -2px 0 0px #ffa500;
+	text-shadow:0 0 4px #ffa500;
+	color: #ffa500;
+}
+
+.pl ul li.active {
+	animation: active 2s 0s;
+	margin-top: -128px;
+}
+
+.pl ul li.inactive {
+	animation: inactive 2s 0s;
+	margin-top: 0px;
+}
+
+@keyframes active {
+    0%, 50% {
+        margin-top: -64px;
+    }
+    50%, 100% {
+        margin-top: -128px;
+    }
+}
+
+@keyframes inactive {
+    0%, 50% {
+        margin-top: -64px;
+    }
+    50%, 100% {
+        margin-top: 0px;
+    }
+}
